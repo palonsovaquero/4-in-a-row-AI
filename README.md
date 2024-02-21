@@ -14,6 +14,8 @@ You can play with several parameters, such as the number of games for training, 
 
 By default, the DQN will play against random, and opponent making random moves. However, you can further train your model by playing against itself, by changing "players = ["computer", "random"]" to "players = ["computer", "computer"]" and "models = [DQN(), None]" to "models = [torch.load('model1.pt'), torch.load('model1.pt')]" in the "train.py" file.
 
+One of the peculiarities of my model is that I do not tell the network what moves are allowed, but rather teach it by setting a strong penalty on illegal moves. I keep a record of the illegal moves, and I penalize them during backpropagation.
+
 In this repostory I attach a simple DQN model that has been trained in 2 million games against random. The results are quite favorable for the DQN. After training for 2 million games, the DQN model can beat random in more than 98% of the games. However, it is still relatively simple for a human to beat the DQN model.
 
 If you want to test your skills against the model, run <code> python play_against_computer.py </code>
